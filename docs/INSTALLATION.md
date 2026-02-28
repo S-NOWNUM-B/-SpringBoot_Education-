@@ -43,21 +43,6 @@ git clone https://github.com/your-username/spring-boot-education.git
 cd spring-boot-education
 ```
 
-## Структура директорий
-
-```
-spring-boot-education/
-├── first-project/           # Spring Boot приложение 1
-├── second-project/          # Spring Boot приложение 2
-├── docs/                    # Документация
-├── .gitignore
-├── .editorconfig
-├── gradle.properties
-├── settings.gradle.kts      # Конфигурация многомодульного проекта
-├── build.gradle.kts         # Root build конфигурация
-└── README.md
-```
-
 ## Первый запуск
 
 ### Запуск конкретного проекта
