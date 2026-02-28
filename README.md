@@ -13,8 +13,10 @@
 ## Содержание
 
 - [О проекте](#о-проекте)
+- [Структура проекта](#структура-проекта)
 - [Быстрый старт](#быстрый-старт)
 - [Системные требования](#системные-требования)
+- [Добавление новых модулей](#добавление-новых-модулей)
 
 ---
 
@@ -26,58 +28,113 @@
 
 ---
 
+## Структура проекта
+
+Это **многомодульный обучающий репозиторий** для изучения Spring Boot и Java. 
+
+```
+spring-boot-education/
+├── docs/                          # Документация и примеры
+│   ├── INSTALLATION.md           # Установка и настройка
+│   ├── PROJECT_STRUCTURE.md      # Как добавлять новые модули
+│   ├── CONTRIBUTING.md           # Правила контрибьютора
+│   ├── FAQ.md                    # Часто задаваемые вопросы
+│   └── examples/                 # Примеры кода
+│       ├── BasicRestController.java
+│       ├── ValidationExample.java
+│       ├── ErrorHandlingExample.java
+│       └── LoggingExample.java
+│
+├── first-project/                 # Первый Spring Boot проект
+│   ├── build.gradle.kts
+│   ├── gradle/
+│   └── src/
+│       ├── main/
+│       │   ├── java/com/example/demo/
+│       │   └── resources/
+│       └── test/
+│
+├── [второй проект]/               # Добавляй новые проекты здесь
+├── .gitignore
+├── .gitattributes
+├── .editorconfig
+├── gradle.properties
+├── settings.gradle.kts
+├── build.gradle.kts
+└── README.md
+```
+
+**Каждый проект в папке** - это отдельное Spring Boot приложение, которое можно:
+- Запустить независимо
+- Собрать в JAR файл
+- Развернуть отдельно
+
+---
+
 ## Быстрый старт
 
-## Создание проекта на Spring Boot
+### Предварительные требования
+
+- **Java 21** или выше
+- **Git**
+- IDE (IntelliJ IDEA, VS Code или Eclipse - опционально)
+
+[Полная инструкция по установке →](docs/INSTALLATION.md)
+
+### 1️⃣ Клонирование репозитория
 
 ```bash
-# 1. Инициализация проекта через Spring Initializr
-# Переходим на https://start.spring.io/ и выбираем:
-# - Gradle (Kotlin) или Maven
-# - Java 21
-# - Spring Boot 3.x
-# - Зависимости: Spring Web, Spring Data JPA, Spring Boot DevTools
-
-# 2. Или используем командную строку
-curl https://start.spring.io/starter.zip \
-  -d dependencies=web,data-jpa,devtools \
-  -d type=gradle-project \
-  -d language=java \
-  -d bootVersion=3.5.11 \
-  -d baseDir=my-project \
-  -d javaVersion=21 \
-  -o my-project.zip && unzip my-project.zip
-
-# 3. Создаём структуру проекта
-mkdir -p src/main/java/com/example/demo/{controller,service,repository,model}
+git clone https://github.com/your-username/spring-boot-education.git
+cd spring-boot-education
 ```
 
-### Установка зависимостей и запуск
+### 2️⃣ Проверка установки Java
 
 ```bash
-  # 1. Клонирование репозитория
-  git clone <repository-url>
-  cd -SpringBoot_Education-
-
-  # 2. Переход в конкретный проект
-  cd first-project
-
-  # 3. Установка зависимостей и запуск
-  ./gradlew bootRun
-  
-  # Или с Maven
-  ./mvnw spring-boot:run
+java -version
+# Output: java version "21.0.x" ...
 ```
 
-### Сборка проекта
+### 3️⃣ Запуск проекта
 
 ```bash
-  # Gradle: создание исполняемого JAR
-  ./gradlew build
-  
-  # Запуск собранного приложения
-  java -jar build/libs/first-project-0.0.1-SNAPSHOT.jar
+# Запуск first-project
+./gradlew :first-project:bootRun
+
+# Или из папки проекта
+cd first-project
+../gradlew bootRun
 ```
+
+Приложение будет доступно по адресу: **http://localhost:8080**
+
+### 4️⃣ Проверка работы
+
+```bash
+# В другом терминале выполни:
+curl http://localhost:8080/hello
+# Ответ: Hello World!
+```
+
+## Документация
+
+| Документ | Содержание |
+|----------|-----------|
+| [INSTALLATION.md](docs/INSTALLATION.md) | Подробная установка, решение проблем |
+| [PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md) | Как добавлять новые проекты, структура |
+| [CONTRIBUTING.md](docs/CONTRIBUTING.md) | Правила контрибьютора (если оставляешь PR) |
+| [FAQ.md](docs/FAQ.md) | Ответы на популярные вопросы |
+
+## Примеры кода
+
+В папке [docs/examples/](docs/examples/) есть готовые примеры:
+
+- **[BasicRestController.java](docs/examples/BasicRestController.java)** - REST API (GET, POST, PUT, DELETE)
+- **[ValidationExample.java](docs/examples/ValidationExample.java)** - Валидация данных
+- **[ErrorHandlingExample.java](docs/examples/ErrorHandlingExample.java)** - Обработка ошибок
+- **[LoggingExample.java](docs/examples/LoggingExample.java)** - Логирование
+
+Скопируй код из примеров в свои проекты и адаптируй под свои нужды!
 
 ---
 
@@ -93,3 +150,67 @@ mkdir -p src/main/java/com/example/demo/{controller,service,repository,model}
 | **Память** | 2 GB RAM | 4+ GB RAM |
 
 </div>
+
+---
+
+## Как добавить новый Spring Boot проект?
+
+[Подробная инструкция →](docs/PROJECT_STRUCTURE.md)
+
+**Быстрый способ:**
+
+```bash
+# 1. Создай папку
+mkdir second-project
+
+# 2. Скопируй build.gradle.kts из first-project
+cp first-project/build.gradle.kts second-project/
+
+# 3. Создай структуру
+mkdir -p second-project/src/{main,test}/java/com/example/demo
+mkdir -p second-project/src/{main,test}/resources
+
+# 4. Создай main класс
+cat > second-project/src/main/java/com/example/demo/SecondProjectApplication.java << 'EOF'
+package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SecondProjectApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(SecondProjectApplication.class, args);
+    }
+}
+EOF
+
+# 5. Запусти проект
+./gradlew :second-project:bootRun
+```
+
+Готово! Новый проект автоматически добавится благодаря `settings.gradle.kts`.
+
+---
+
+## Полезные команды
+
+```bash
+# Список всех проектов
+./gradlew projects
+
+# Сборка всех проектов
+./gradlew build
+
+# Запуск конкретного проекта
+./gradlew :first-project:bootRun
+
+# Запуск тестов
+./gradlew test
+
+# Очистка (удаляет build папки)
+./gradlew clean
+
+# Просмотр зависимостей
+./gradlew dependencies
+```
