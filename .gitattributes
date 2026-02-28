@@ -21,6 +21,11 @@ gradlew.bat text eol=crlf
 # Markdown
 *.md text eol=lf
 
+# Exclude from GitHub language statistics (only Java should be shown)
+*.html linguist-vendored
+*.css linguist-vendored
+*.js linguist-vendored
+
 # Windows
 *.bat text eol=crlf
 *.cmd text eol=crlf
