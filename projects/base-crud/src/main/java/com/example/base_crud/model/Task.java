@@ -1,4 +1,4 @@
-package main.java.com.example.base_crud.model;
+package com.example.base_crud.model;
 
 public class Task {
 	private Long id;

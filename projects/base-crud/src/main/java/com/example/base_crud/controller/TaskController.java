@@ -1,7 +1,7 @@
-package main.java.com.example.base_crud.controller;
+package com.example.base_crud.controller;
 
-import main.java.com.example.base_crud.model.Task;
-import main.java.com.example.base_crud.service.TaskService;
+import com.example.base_crud.model.Task;
+import com.example.base_crud.service.TaskService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package main.java.com.example.base_crud;
+package com.example.base_crud;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

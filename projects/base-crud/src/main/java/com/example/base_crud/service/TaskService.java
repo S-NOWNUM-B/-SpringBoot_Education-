@@ -1,6 +1,6 @@
-package main.java.com.example.base_crud.service;
+package com.example.base_crud.service;
 
-import main.java.com.example.base_crud.model.Task;
+import com.example.base_crud.model.Task;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
