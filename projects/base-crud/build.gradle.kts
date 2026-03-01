@@ -6,7 +6,7 @@ plugins {
 
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
-description = "CRUD project for Spring Boot"
+description = "Base-crud project for Spring Boot"
 
 java {
 	toolchain {
@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter")
+	implementation("org.springframework.boot:spring-boot-starter-web")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
